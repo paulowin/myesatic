@@ -49,8 +49,12 @@
           <table class="table">
             <tbody>
               <tr>
-                <th>Free Version</th>
-                <td><a href="html/index.php" target="_blank">Vertical Menu Template</a></td>
+                <th>User</th>
+                <td><a href="html/index.php" target="_blank">  User </a></td>
+              </tr>
+              <tr>
+                <th>Admin</th>
+                <td><a href="admin/index.php" target="_blank"> Admin </a></td>
               </tr>
             </tbody>
           </table>
