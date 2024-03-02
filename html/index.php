@@ -22,7 +22,7 @@ if ($info_utilisateur) {
 
 ?>
 <!-- Ajoutez ce lien où vous le souhaitez sur votre page -->
-<a href="deconnexion.php">Se Déconnecter</a>
+
 
 <!DOCTYPE html>
 
