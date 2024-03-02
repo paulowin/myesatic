@@ -89,6 +89,223 @@
 
 
 
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="row">
+          <h5 class="py-3 my-4">Résultats Académiques</h5>
+                <div class="col">
+                  <div class="nav-align-top mb-4">
+                    <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
+                      <li class="nav-item">
+                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="true">
+                          <i class="tf-icons bx bx-home"></i> Semestre 1 
+                          <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span>
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">
+                          <i class="tf-icons bx bx-user"></i> Semestre 2
+                        </button>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade active show" id="navs-pills-justified-home" role="tabpanel">
+                      <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Eléments constitutifs des Unités d'Enseignement (Partie 1)</th>
+                            <th scope="col">Note 1</th>
+                            <th scope="col">Note 2</th>
+                            <th scope="col">Note 3</th>
+                            <th scope="col">Note 4</th>
+                            <th scope="col">Note 5</th>
+                            <th scope="col">Moyenne</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Logique et raisonnements mathématiques</th>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fonction à une variable réelle</th>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>16</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Optique géométrique</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Electrostatique-Magnétotatique</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Architecture des ordinateurs</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Anglais</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Introduction au droit</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <!-- Ajoutez ici d'autres lignes pour d'autres matières -->
+                        </tbody>
+                    </table>
+
+                    <hr class="container-m-nx border-light mt-5">
+                    
+                      </div>
+
+                      <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Eléments constitutifs des Unités d'Enseignement (Partie 2)</th>
+                            <th scope="col">Note 1</th>
+                            <th scope="col">Note 2</th>
+                            <th scope="col">Note 3</th>
+                            <th scope="col">Note 4</th>
+                            <th scope="col">Note 5</th>
+                            <th scope="col">Moyenne</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Structures algébriques</th>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Géométrie différentielle élémentaire</th>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>16</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Physique des dispositifs électroniques</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Electrocinétique</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Initiation en algorithmique</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Français</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Introduction au droit</th>
+                            <td>14</td>
+                            <td>13</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>14</td>
+                            <td>16</td>
+                        </tr>
+                        <!-- Ajoutez ici d'autres lignes pour d'autres matières -->
+                        </tbody>
+                    </table>
+
+
+                      <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
+                        <p>
+                          Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
+                          cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
+                          cheesecake fruitcake.
+                        </p>
+                        <p class="mb-0">
+                          Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
+                          cotton candy liquorice caramels.
+                        </p>
+                      </div>
+                      <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
+                        <p>
+                          Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
+                          cupcake gummi bears cake chocolate.
+                        </p>
+                        <p class="mb-0">
+                          Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
+                          roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
+                          jelly-o tart brownie jelly.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+              </div>
 
 
 
@@ -97,39 +314,8 @@
 
 
 
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Résultats Académiques</h1>
 
-  <!-- Onglets -->
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#trimestre1">Trimestre 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#trimestre2">Trimestre 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#trimestre3">Trimestre 3</a>
-    </li>
-  </ul>
 
-  <!-- Contenu des onglets -->
-  <div class="tab-content mt-3">
-    <div id="trimestre1" class="tab-pane fade show active">
-      <h3>Trimestre 1</h3>
-      <p>Ici vont les résultats du trimestre 1.</p>
-    </div>
-    <div id="trimestre2" class="tab-pane fade">
-      <h3>Trimestre 2</h3>
-      <p>Ici vont les résultats du trimestre 2.</p>
-    </div>
-    <div id="trimestre3" class="tab-pane fade">
-      <h3>Trimestre 3</h3>
-      <p>Ici vont les résultats du trimestre 3.</p>
-    </div>
-  </div>
-
-</div>
 
 <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
