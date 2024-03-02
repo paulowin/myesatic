@@ -38,16 +38,22 @@ $message_retour = null;
                 } else {
                     $_SESSION['user_id'] = $donnee_membre['user_id'];
                     $_SESSION['mail'] = $mail;
+                    $_SESSION['user_id'] = true;
                     $message_retour = "Connexion réussie!";
                     // Tester si le membre veut rester connecté
                     if (isset($_POST['connexion_auto'])) {
                        setcookie("mail", $donnee_membre['mail'], time()+(60*60*24*14), "", "", false, true);
                        setcookie("mdp", $donnee_membre['mdp'], time()+(60*60*24*14), "", "", false, true);
                        setcookie("user_id", $donnee_membre['user_id'], time()+(60*60*24*14), "", "", false, true);
-                    } else {
+                       header("Location: index.php");
+                       exit();
+                      } else {
                         setcookie("mail","", time()+(60*60*24*14), "", "", false, true);
                         setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
                         setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
+                        $_SESSION['id'] = $username;
+                        header("Location: index.php");
+                        exit();
                     }
                 }
             }
