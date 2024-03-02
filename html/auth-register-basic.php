@@ -1,3 +1,5 @@
+<?php $message_retour = null; ?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -138,30 +140,114 @@
               <h4 class="mb-2">Adventure starts here 🚀</h4>
               <p class="mb-4">Make your app management easy and fun!</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
+              <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
+                  <label for="nom" class="form-label">Votre nom :</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="username"
-                    name="username"
+                    id="nom"
+                    name="nom"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="prenoms" class="form-label">Votre prenoms :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="prenoms"
+                    name="prenoms"
+                    placeholder="Enter your prenoms"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="birth" class="form-label">Birth :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="birth"
+                    name="birth"
                     placeholder="Enter your username"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                  <label for="matricule" class="form-label">Votre matricule:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="matricule"
+                    name="matricule"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="niveau_etude" class="form-label">Votre niveau_etude :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="niveau_etude"
+                    name="niveau_etude"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="filiere" class="form-label">Votre filiere :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="filiere"
+                    name="filiere"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="classe" class="form-label">Votre classe :</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="classe"
+                    name="classe"
+                    placeholder="Enter your username"
+                    autofocus
+                  />
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="mail" class="form-label">Votre adresse email :</label>
+                  <input type="text" class="form-control" id="mail" name="mail" placeholder="Enter your email" />
                 </div>
                 <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Password</label>
+                  <label class="form-label" for="mdp">Password</label>
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
+                      id="mdp"
+                      class="password"
+                      name="mdp"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="confirmation">confirmation</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="confirmation"
+                      class="password"
+                      name="confirmation"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
@@ -178,17 +264,127 @@
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
+                <button class="btn btn-primary d-grid w-100" type="submit" name="submit" id="submit" value="Valider votre inscription"  >Valider votre inscription</button>
               </form>
 
-              <p class="text-center">
+              <?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=myesatic;chartset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch(Exception $e) {
+        die('Erreur :' . $e->getMessage());
+    }
+
+    if (!empty($_POST['submit'])) { 
+        if ( (!empty($_POST['nom'])) AND (!empty($_POST['prenoms'])) AND (!empty($_POST['birth'])) AND (!empty($_POST['matricule'])) AND (!empty($_POST['niveau_etude'])) AND (!empty($_POST['filiere'])) AND (!empty($_POST['classe']))  AND  (!empty($_POST['mail'])) AND (!empty($_POST['mdp'])) AND (!empty($_POST['confirmation'])) ) {
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenoms = htmlspecialchars($_POST['prenoms']);
+            $birth = htmlspecialchars($_POST['birth']);
+            $matricule = htmlspecialchars($_POST['matricule']);
+            $niveau_etude = htmlspecialchars($_POST['niveau_etude']);
+            $filiere = htmlspecialchars($_POST['filiere']);
+            $classe = htmlspecialchars($_POST['classe']);
+            $mail = htmlspecialchars($_POST['mail']);
+            // tester la disponibilité du mail
+            $req_mail = $bdd-> prepare('SELECT COUNT(mail) AS occurence_mail FROM user WHERE mail = ?');
+            $req_mail -> execute(array($mail));
+            $data_mail = $req_mail->fetch();
+            // tester la disponibilité du matricule
+            $req_matricule = $bdd-> prepare('SELECT COUNT(matricule) AS occurence_matricule FROM user WHERE matricule = ?');
+            $req_matricule -> execute(array($matricule));
+            $data_matricule = $req_matricule->fetch();
+            if ($data_matricule['occurence_matricule'] == 0) {
+                // vérifier la valitié du mail
+                if (preg_match("#^[a-z0-9_.-]+@[a-z0-9_.-]{2,}\.[a-z]{2,4}$#", $mail)) {
+                 // vérifier la disponibilité du mail
+                    if ($data_mail['occurence_mail'] == 0) {
+                       // vérifier la validité du mdp
+                     // if (preg_match("#[0-9a-zA-Z$@%*+_?!-]{4}[0-9]+[a-z]+[A-Z]+[$@%*+_?!-]+#",$_POST['mdp'])) {
+                        // vérifier la correspondance entre mdp et confirmation
+                        if ($_POST['mdp'] == $_POST['confirmation']) {
+                            // vérifier si doublon mail dans table membres
+                            $req_mail = $bdd-> prepare('SELECT COUNT(mail) AS occurence_mail FROM user WHERE mail = ?');
+                            $req_mail -> execute(array($mail));
+                            $data_mail = $req_mail->fetch();
+                            if ($data_mail['occurence_mail'] == 0) {
+                                // Insérer dans la table membres
+                                $req = $bdd->prepare('INSERT INTO user (nom, prenoms, birth, matricule, niveau_etude, filiere, classe, mail, mdp) VALUES (:nom, :prenoms, :birth, :matricule, :niveau_etude, :filiere, :classe, :mail, :mdp)');
+                                $req->execute(array(
+                                    'nom' => $nom,
+                                    'prenoms' => $prenoms,
+                                    'birth' => $birth,
+                                    'matricule' => $matricule,
+                                    'niveau_etude' => $niveau_etude,
+                                    'filiere' => $filiere,
+                                    'classe' => $classe,
+                                    'mail'=> $mail,
+                                    'mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT)
+                                ));
+                                $req->closeCursor();
+                                $message_retour = '<strong>Inscription réussie ! Bienvenue dans l\'équipe !</strong>';
+                            // sinon renvoyer un message de doublon sur le mail
+                            } else {
+                                $message_retour = '<strong>Un compte existe déjà pour cette adresse.</strong>';
+                            }
+                        // renvoyer un message d'erreur sur la correspondance entre mdp et confirmation
+                        } else {
+                            $message_retour = '<strong>Les mots de passe ne correspondent pas.</strong>';
+                        }
+                        // renvoyer une erreur de mot de passe non valide
+                        // } else {
+                        //     $message_retour = '<strong>Le mot de passe n\'est pas valide.</strong>';
+                        // }
+                        // renvoyer un message de mail non valide
+                      } else {
+                       $message_retour = '<strong>L\'adresse mail n\'est pas disponible.</strong>';
+                      }
+                        // renvoyer un message de non disponibilité du nom
+                } else {
+                    $message_retour = '<strong>L\'adresse mail n\'est pas valide.</strong>';
+                }
+            // renvoyer un message de non disponibilité du nom
+        } else {
+            $message_retour = '<strong>Ce matricule n\'est pas disponible.</strong>';
+              }
+        // renvoyer un message d'informations manquantes
+    } else {
+        $message_retour = '<strong>Information manquante, toutes les informations doivent être saisies.</strong>';
+    }
+    }
+    
+//    unset ($_POST['submit'], $_POST['nom'], $_POST['mail'], $_POST['mdp'], $_POST['confirmation']);
+$_POST['submit'] = null;
+$_POST['nom'] = null;
+$_POST['prenoms'] = null;
+$_POST['birth'] = null;
+$_POST['matricule'] = null;
+$_POST['niveau_etude'] = null;
+$_POST['filiere'] = null;
+$_POST['classe'] = null;
+$_POST['mail'] = null;
+$_POST['mdp'] = null;
+$_POST['confirmation'] = null;
+$_POST['message_retour'] = null;
+
+
+?>
+
+
+<p id='message-retour'><strong><?php echo $message_retour; ?></strong></p>
+
+
+<p class="text-center">
                 <span>Already have an account?</span>
                 <a href="auth-login-basic.php">
                   <span>Sign in instead</span>
                 </a>
               </p>
+
+              <a href="index.php">Retour à la page de connexion</a>
             </div>
           </div>
+
+
+
           <!-- Register Card -->
         </div>
       </div>

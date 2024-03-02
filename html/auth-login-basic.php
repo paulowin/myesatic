@@ -1,3 +1,66 @@
+<?php
+
+
+// Tester si une session existe et en démarer une si nécessaire
+if (!(isset($_SESSION['id']))) {
+    session_start();
+}
+
+// Placer les cookies
+setcookie("mail", "", time()+(60*60*24*14), "", "", false, true);
+setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
+setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
+
+$message_retour = null;
+
+?>
+<?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=myesatic;chartset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    } catch(Exception $e) {
+        die('Erreur :' . $e->getMessage());
+    }
+    
+    
+    if ((!empty($_POST['mail'])) AND (!empty($_POST['mdp'])) AND (isset($_POST['submit']))) {
+        $mail = htmlspecialchars($_POST['mail']);
+        // Tester si il existe un utilisateur avec le même mail dans la table membres
+        $req_membre = $bdd->prepare('SELECT user_id, mdp, mail FROM user WHERE mail = :mail');
+        $req_membre->execute(array('mail' => $mail));
+        $donnee_membre = $req_membre->fetch();
+        if (!($donnee_membre)) {
+            // Si l'utilisateur n'existe pas 
+            $message_retour = "Utilisateur n'existe pas.";
+        } else {
+               // Tester si le hash du mdp saisi correspond à celui du membre qui a le même mail
+               if (!(password_verify($_POST['mdp'], $donnee_membre['mdp']))) {
+                   $message_retour = "Utilisateur et/ou mot de passe incorrect.";
+                } else {
+                    $_SESSION['user_id'] = $donnee_membre['user_id'];
+                    $_SESSION['mail'] = $mail;
+                    $message_retour = "Connexion réussie!";
+                    // Tester si le membre veut rester connecté
+                    if (isset($_POST['connexion_auto'])) {
+                       setcookie("mail", $donnee_membre['mail'], time()+(60*60*24*14), "", "", false, true);
+                       setcookie("mdp", $donnee_membre['mdp'], time()+(60*60*24*14), "", "", false, true);
+                       setcookie("user_id", $donnee_membre['user_id'], time()+(60*60*24*14), "", "", false, true);
+                    } else {
+                        setcookie("mail","", time()+(60*60*24*14), "", "", false, true);
+                        setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
+                        setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
+                    }
+                }
+            }
+        $req_membre->closeCursor();
+        } else {
+            // Si aucune info saisie on vide la session et les cookies
+            $_SESSION['user_id'] = "";
+            $_SESSION['mail'] = "";
+            setcookie("mail","", time()+(60*60*24*14), "", "", false, true);
+            setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
+            setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
+        }
+?>
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -138,21 +201,21 @@
               <h4 class="mb-2">Bienvenue sur MyEsatic 👋</h4>
               <p class="mb-4">Veuillez vous connecter à votre compte</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
+              <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="mail" class="form-label">Email</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="email"
-                    name="email-username"
+                    id="mail"
+                    name="mail"
                     placeholder="Entrez votre Email"
                     autofocus
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Mot de passe</label>
+                    <label class="form-label" for="mdp">Mot de passe</label>
                     <a href="auth-forgot-password-basic.php">
                       <small>Mot de passe oublié ?</small>
                     </a>
@@ -160,9 +223,9 @@
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
-                      id="password"
+                      id="mdp"
                       class="form-control"
-                      name="password"
+                      name="mdp"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
@@ -171,15 +234,19 @@
                 </div>
                 <div class="mb-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Se rappeler de moi </label>
+                    <input class="form-check-input" type="checkbox" id="connexion_auto" name="connexion_auto" value="connexion_auto" />
+                    <label class="form-check-label" for="connexion_auto"> Se rappeler de moi </label>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Connexion</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit" name="submit" id="submit">Connexion</button>
                 </div>
               </form>
+              
 
+<p id='message-retour'><strong><?php echo $message_retour; ?></strong></p>
+<a href="deconnexion.php">Déconnexion</a>
+    <a href="upload.php">Ajouter document</a>
               <p class="text-center">
                 <span>Nouveau sur notre plateforme ?</span>
                 <a href="auth-register-basic.php">
