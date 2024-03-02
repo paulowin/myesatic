@@ -178,23 +178,13 @@ if ($info_utilisateur) {
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value="<?php  echo $info_utilisateur['nom'] ?>"
+                              value="John"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="<?php  echo $info_utilisateur['nom'] ?>" />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Birth</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['birth'] ?>"
-                            />
+                            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -203,48 +193,18 @@ if ($info_utilisateur) {
                               type="text"
                               id="email"
                               name="email"
-                              value="<?php  echo $info_utilisateur['nom'] ?>"
+                              value="john.doe@example.com"
                               placeholder="john.doe@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Matricule</label>
+                            <label for="organization" class="form-label">Organization</label>
                             <input
                               type="text"
                               class="form-control"
                               id="organization"
                               name="organization"
-                              value="<?php  echo $info_utilisateur['matricule'] ?>"
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Niveau d'etude</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['niveau_etude'] ?>"
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Filiere</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['filiere'] ?>"
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Classe</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['classe'] ?>"
+                              value="ThemeSelection"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -261,16 +221,6 @@ if ($info_utilisateur) {
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">mdp</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['mdp'] ?>"
-                            />
-                          </div>
-                          <!-- <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Address</label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                           </div>
@@ -288,8 +238,8 @@ if ($info_utilisateur) {
                               placeholder="231465"
                               maxlength="6"
                             />
-                          </div> -->
-                          <!-- <div class="mb-3 col-md-6">
+                          </div>
+                          <div class="mb-3 col-md-6">
                             <label class="form-label" for="country">Country</label>
                             <select id="country" class="select2 form-select">
                               <option value="">Select</option>
@@ -362,7 +312,7 @@ if ($info_utilisateur) {
                               <option value="pound">Pound</option>
                               <option value="bitcoin">Bitcoin</option>
                             </select>
-                          </div> -->
+                          </div>
                         </div>
                         <div class="mt-2">
                           <button type="submit" class="btn btn-primary me-2">Save changes</button>

@@ -16,8 +16,8 @@
                   <input
                     type="text"
                     class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
+                    placeholder="Recheche"
+                    aria-label="Rechecher"
                   />
                 </div>
               </div>
@@ -64,13 +64,13 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="profil.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">Mon Profil</span>
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="pages-account-settings-account.php">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Paramètres</span>
                       </a>
