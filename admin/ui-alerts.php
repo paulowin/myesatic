@@ -1,42 +1,3 @@
-<?php
-$conn=new PDO('mysql:host=localhost; dbname=myesatic', 'root', '') or die(mysql_error());
-if(isset($_POST['submit'])!=""){
-  $name=$_FILES['file']['name'];
-  $size=$_FILES['file']['size'];
-  $type=$_FILES['file']['type'];
-  $temp=$_FILES['file']['tmp_name'];
-  // $caption1=$_POST['caption'];
-  // $link=$_POST['link'];
-  $fname = date("YmdHis").'_'.$name;
-  $chk = $conn->query("SELECT * FROM  upload where name = '$name' ")->rowCount();
-  if($chk){
-    $i = 1;
-    $c = 0;
-	while($c == 0){
-    	$i++;
-    	$reversedParts = explode('.', strrev($name), 2);
-    	$tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
-    // var_dump($tname);exit;
-    	$chk2 = $conn->query("SELECT * FROM  upload where name = '$tname' ")->rowCount();
-    	if($chk2 == 0){
-    		$c = 1;
-    		$name = $tname;
-    	}
-    }
-}
- $move =  move_uploaded_file($temp,"upload/".$fname);
- if($move){
- 	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
-	if($query){
-	header("location:add-doc.php");
-	}
-	else{
-	die(mysql_error());
-	}
- }
-}
-?>
-
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -66,7 +27,7 @@ if(isset($_POST['submit'])!=""){
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Basic Inputs - Forms | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Alerts - UI elements | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -121,7 +82,6 @@ if(isset($_POST['submit'])!=""){
 	include_once('partials/head.php');
 ?>
    
-
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
@@ -129,115 +89,75 @@ if(isset($_POST['submit'])!=""){
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Support de Devoir</h4>
-
-              <div class="row">
-                <div class="col-md-6">
-                 
-                </div>
-                <div class="col-md-6">
-                
-                </div>
-
-             
- <!-- File input -->
- <!-- <div class="row">
-                <div class="col-md-6">
- <div class="card">
-                    <h5 class="card-header">File input</h5>
-                    <div class="card-body">
-                      <div class="mb-3">
-
-				  <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
-  <div class="dz-message needsclick">
-    Drop files here or click to upload
-    <span class="note needsclick">(This is just a demo dropzone. Selected files are <span class="fw-medium">not</span> actually uploaded.)</span>
-  </div>
-  <div class="fallback">
-    <input name="file" type="file" />
-  </div>
-</form>
-<script>
-const dropzoneMulti = new Dropzone('#dropzone-multi', {
-  previewTemplate: previewTemplate,
-  parallelUploads: 1,
-  maxFilesize: 5,
-  addRemoveLinks: true
-});
-</script>
-</div>
-</div>
-</div>
-</div>
-</div> -->
-         
-
-                  <!-- File input -->
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Alerts</h4>
+              <div class="row mb-4">
+                <!-- Basic Alerts -->
+                <div class="col-md mb-4 mb-md-0">
                   <div class="card">
-                    <h5 class="card-header">Ajouter un fichier comme support du cours</h5>
+                    <h5 class="card-header">Basic Alerts</h5>
                     <div class="card-body">
-                      <!-- <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile" />
-                      </div> -->
-                      <div class="mb-3">
-					  <form enctype="multipart/form-data" action="" name="form" method="post">
-                        <label for="formFileMultiple" class="form-label">Vous avez une limite de 50 fichiers</label>
-                        <input class="form-control" name="file" type="file" id="file" multiple />
-						</div>
-						<div class="d-grid gap-2 col-6 mx-auto">
-						<button class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit">Valider</button>
-						</div>
-					</form>
-                    
-					  
-                      <!-- <div>
-                        <label for="formFileDisabled" class="form-label">Disabled file input example</label>
-                        <input class="form-control" type="file" id="formFileDisabled" disabled />
-                      </div> -->
+                      <div class="alert alert-primary" role="alert">This is a primary alert — check it out!</div>
+
+                      <div class="alert alert-secondary" role="alert">This is a secondary alert — check it out!</div>
+
+                      <div class="alert alert-success" role="alert">This is a success alert — check it out!</div>
+
+                      <div class="alert alert-danger" role="alert">This is a danger alert — check it out!</div>
+
+                      <div class="alert alert-warning" role="alert">This is a warning alert — check it out!</div>
+
+                      <div class="alert alert-info" role="alert">This is an info alert — check it out!</div>
+
+                      <div class="alert alert-dark mb-0" role="alert">This is a dark alert — check it out!</div>
                     </div>
                   </div>
                 </div>
+                <!--/ Basic Alerts -->
+                <!-- Dismissible Alerts -->
+                <div class="col-md">
+                  <div class="card">
+                    <h5 class="card-header">Dismissible Alerts</h5>
+                    <div class="card-body">
+                      <div class="alert alert-primary alert-dismissible" role="alert">
+                        This is a primary dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-secondary alert-dismissible" role="alert">
+                        This is a secondary dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        This is a success dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                        This is a danger dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-warning alert-dismissible" role="alert">
+                        This is a warning dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-info alert-dismissible" role="alert">
+                        This is an info dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-dark alert-dismissible mb-0" role="alert">
+                        This is a dark dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Dismissible Alerts -->
               </div>
             </div>
-			
-
-  <div class="row-fluid">
-	        <div class="span12">
-	            <div class="container">
-		<br />
-	
-		<br />
-		<br />
-		<br />
-		<br />
-		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
-			<thead>
-				<tr>
-					<th width="90%" align="center">Files</th>
-					<th align="center">Action</th>	
-				</tr>
-			</thead>
-			<?php
-			$query=$conn->query("select * from upload order by id desc");
-			while($row=$query->fetch()){
-				$name=$row['name'];
-			?>
-			<tr>
-			
-				<td>
-					&nbsp;<?php echo $name ;?>
-				</td>
-				<td>
-					<button class="alert-success"><a href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Download</a></button>
-				</td>
-			</tr>
-			<?php }?>
-		</table>
-	</div>
-	</div>
-	</div>
-
             <!-- / Content -->
 
             <!-- Footer -->
@@ -303,8 +223,6 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
-
-    <script src="../assets/js/form-basic-inputs.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
