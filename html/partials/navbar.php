@@ -68,8 +68,8 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
-              <a href="index.php" class="menu-link">
+            <li class="menu-item active" style="color: #0483c4;">
+              <a href="index.php" class="menu-link" style="color: #0483c4;">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Tableau de bord</div>
               </a>

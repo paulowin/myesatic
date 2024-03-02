@@ -73,6 +73,14 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
+
+    <style>
+    .content-wrapper {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f8f9fa"/><circle cx="50" cy="50" r="30" fill="#6c757d"/></svg>');
+      background-repeat: repeat;
+      padding: 20px; /* Juste pour démonstration */
+    }
+  </style>
   </head>
 
   <body>
@@ -102,25 +110,24 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
-                <div class="col-lg-8 mb-4 order-0">
+                <div class="mb-4 order-0">
                   <div class="card">
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                          <h2 class="card-title" style="color: #0483c4;">Bienvenue Jean Yves ! 🎉</h2>
                           <p class="mb-4">
-                            You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                            your profile.
+                            N'hesites pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
                           </p>
 
-                          <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                          <a href="javascript:;" class="btn btn-sm" style="color: #0483c4;">Voir plus</a>
                         </div>
                       </div>
                       <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
+                        <div class="card-body pb-4 px-0 px-md-4">
                           <img
-                            src="../assets/img/illustrations/man-with-laptop-light.png"
-                            height="140"
+                            src="../assets/img/illustrations/3d-business-female-student-with-notebooks.png"
+                            height="170"
                             alt="View Badge User"
                             data-app-dark-img="illustrations/man-with-laptop-dark.png"
                             data-app-light-img="illustrations/man-with-laptop-light.png"
@@ -130,6 +137,63 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
                     </div>
                   </div>
                 </div>
+
+                <div class="container mt-5">
+  <h1 class="mb-4" style="color: #0483c4;">Emploi du temps de la semaine</h1>
+
+  <!-- Tableau de l'emploi du temps -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Heures</th>
+        <th scope="col">Lundi</th>
+        <th scope="col">Mardi</th>
+        <th scope="col">Mercredi</th>
+        <th scope="col">Jeudi</th>
+        <th scope="col">Vendredi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">8h00 - 9h00</th>
+        <td>Cours de Mathématiques</td>
+        <td>Cours de Français</td>
+        <td></td>
+        <td>Cours de Physique</td>
+        <td>Cours d'Anglais</td>
+      </tr>
+      <tr>
+        <th scope="row">9h00 - 10h00</th>
+        <td>Cours de Sciences</td>
+        <td>Cours de Histoire</td>
+        <td>Cours de Géographie</td>
+        <td>Cours de SVT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">10h00 - 11h00</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Cours d'Art</td>
+      </tr>
+      <tr>
+        <th scope="row">11h00 - 12h00</th>
+        <td></td>
+        <td>Cours de Musique</td>
+        <td>Cours de Sport</td>
+        <td>Cours de Chimie</td>
+        <td></td>
+      </tr>
+      <!-- Ajoutez ici d'autres lignes pour d'autres plages horaires -->
+    </tbody>
+  </table>
+
+</div>
+
+
+                
                 <div class="col-lg-4 col-md-4 order-1">
                   <div class="row">
                     <div class="col-lg-6 col-md-12 col-6 mb-4">
