@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 02 mars 2024 à 05:43
+-- Généré le : sam. 02 mars 2024 à 06:52
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.2.0
 
@@ -24,23 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pdf_data`
+-- Structure de la table `upload`
 --
 
-DROP TABLE IF EXISTS `pdf_data`;
-CREATE TABLE IF NOT EXISTS `pdf_data` (
+DROP TABLE IF EXISTS `upload`;
+CREATE TABLE IF NOT EXISTS `upload` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `filename` varchar(255) NOT NULL,
+  `fname` text NOT NULL,
+  `name` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `pdf_data`
+-- Déchargement des données de la table `upload`
 --
 
-INSERT INTO `pdf_data` (`id`, `username`, `filename`) VALUES
-(1, 'Isaac', 'INFORMATIONS .pdf');
+INSERT INTO `upload` (`id`, `fname`, `name`) VALUES
+(1, '20240302063701_demo.sql', 'demo.sql'),
+(2, '20240302063755_myesatic.sql', 'myesatic.sql'),
+(3, '20240302064125_Great-zim-aerial-looking-West.JPG', 'Great-zim-aerial-looking-West.JPG'),
+(4, '20240302064818_TD Calcul vectoriel.pdf', 'TD Calcul vectoriel.pdf');
 
 -- --------------------------------------------------------
 
