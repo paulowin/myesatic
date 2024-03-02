@@ -85,8 +85,13 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.php" class="menu-link"><i class='' ></i>
+                  <a href="add-doc.php" class="menu-link"><i class='' ></i>
                     <div data-i18n="Account">Supports de cours</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-account.php" class="menu-link"><i class='' ></i>
+                    <div data-i18n="Account">Modification de profil</div>
                   </a>
                 </li>
                 <li class="menu-item">
