@@ -1,3 +1,42 @@
+<?php
+$conn=new PDO('mysql:host=localhost; dbname=myesatic', 'root', '') or die(mysql_error());
+if(isset($_POST['submit'])!=""){
+  $name=$_FILES['file']['name'];
+  $size=$_FILES['file']['size'];
+  $type=$_FILES['file']['type'];
+  $temp=$_FILES['file']['tmp_name'];
+  // $caption1=$_POST['caption'];
+  // $link=$_POST['link'];
+  $fname = date("YmdHis").'_'.$name;
+  $chk = $conn->query("SELECT * FROM  upload where name = '$name' ")->rowCount();
+  if($chk){
+    $i = 1;
+    $c = 0;
+	while($c == 0){
+    	$i++;
+    	$reversedParts = explode('.', strrev($name), 2);
+    	$tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
+    // var_dump($tname);exit;
+    	$chk2 = $conn->query("SELECT * FROM  upload where name = '$tname' ")->rowCount();
+    	if($chk2 == 0){
+    		$c = 1;
+    		$name = $tname;
+    	}
+    }
+}
+ $move =  move_uploaded_file($temp,"upload/".$fname);
+ if($move){
+ 	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
+	if($query){
+	header("location:add-doc.php");
+	}
+	else{
+	die(mysql_error());
+	}
+ }
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -90,7 +129,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Basic Inputs</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Support de Devoir</h4>
 
               <div class="row">
                 <div class="col-md-6">
@@ -102,6 +141,8 @@
 
              
  <!-- File input -->
+ <!-- <div class="row">
+                <div class="col-md-6">
  <div class="card">
                     <h5 class="card-header">File input</h5>
                     <div class="card-body">
@@ -127,29 +168,76 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 </div>
 </div>
 </div>
-
+</div>
+</div> -->
+         
 
                   <!-- File input -->
                   <div class="card">
-                    <h5 class="card-header">File input</h5>
+                    <h5 class="card-header">Ajouter un fichier comme support du cours</h5>
                     <div class="card-body">
-                      <div class="mb-3">
+                      <!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" type="file" id="formFile" />
-                      </div>
+                      </div> -->
                       <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple />
-                      </div>
-                      <div>
+					  <form enctype="multipart/form-data" action="" name="form" method="post">
+                        <label for="formFileMultiple" class="form-label">Vous avez une limite de 50 fichiers</label>
+                        <input class="form-control" name="file" type="file" id="file" multiple />
+						</div>
+						<div class="d-grid gap-2 col-6 mx-auto">
+						<button class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit">Valider</button>
+						</div>
+					</form>
+                    
+					  
+                      <!-- <div>
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+			
+
+  <div class="row-fluid">
+	        <div class="span12">
+	            <div class="container">
+		<br />
+	
+		<br />
+		<br />
+		<br />
+		<br />
+		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+			<thead>
+				<tr>
+					<th width="90%" align="center">Files</th>
+					<th align="center">Action</th>	
+				</tr>
+			</thead>
+			<?php
+			$query=$conn->query("select * from upload order by id desc");
+			while($row=$query->fetch()){
+				$name=$row['name'];
+			?>
+			<tr>
+			
+				<td>
+					&nbsp;<?php echo $name ;?>
+				</td>
+				<td>
+					<button class="alert-success"><a href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Download</a></button>
+				</td>
+			</tr>
+			<?php }?>
+		</table>
+	</div>
+	</div>
+	</div>
+
             <!-- / Content -->
 
             <!-- Footer -->
