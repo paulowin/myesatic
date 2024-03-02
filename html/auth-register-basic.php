@@ -133,105 +133,106 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder" style="text-transform: none;">MyEsatic</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Adventure starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p>
+              <h4 class="mb-2">
+                  L'aventure commence ici 🚀</h4>
+              <p class="mb-4">Smplifiez-vous la vie et améliorez votre niveau de productivité</p>
 
               <form id="formAuthentication" class="mb-3" action="" method="POST">
                 <div class="mb-3">
-                  <label for="nom" class="form-label">Votre nom :</label>
+                  <label for="nom" class="form-label">Nom :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="nom"
                     name="nom"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre nom"
                     autofocus
                   />
                 </div>
 
                 <div class="mb-3">
-                  <label for="prenoms" class="form-label">Votre prenoms :</label>
+                  <label for="prenoms" class="form-label">Prenoms :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="prenoms"
                     name="prenoms"
-                    placeholder="Enter your prenoms"
+                    placeholder="Entrez vos prénoms"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="birth" class="form-label">Birth :</label>
+                  <label for="birth" class="form-label">Date de naissance :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="birth"
                     name="birth"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre date de naissance"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="matricule" class="form-label">Votre matricule:</label>
+                  <label for="matricule" class="form-label">Matricule :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="matricule"
                     name="matricule"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre matricule"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="niveau_etude" class="form-label">Votre niveau_etude :</label>
+                  <label for="niveau_etude" class="form-label">Niveau d'etude :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="niveau_etude"
                     name="niveau_etude"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre niveau d'étude"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="filiere" class="form-label">Votre filiere :</label>
+                  <label for="filiere" class="form-label">Filiere :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="filiere"
                     name="filiere"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre filière"
                     autofocus
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="classe" class="form-label">Votre classe :</label>
+                  <label for="classe" class="form-label">Classe :</label>
                   <input
                     type="text"
                     class="form-control"
                     id="classe"
                     name="classe"
-                    placeholder="Enter your username"
+                    placeholder="Entrez votre classe"
                     autofocus
                   />
                 </div>
 
 
                 <div class="mb-3">
-                  <label for="mail" class="form-label">Votre adresse email :</label>
-                  <input type="text" class="form-control" id="mail" name="mail" placeholder="Enter your email" />
+                  <label for="mail" class="form-label">Email :</label>
+                  <input type="text" class="form-control" id="mail" name="mail" placeholder="Entrez votre email" />
                 </div>
                 <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="mdp">Password</label>
+                  <label class="form-label" for="mdp">Mot de passe</label>
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
                       id="mdp"
-                      class="password"
+                      class="form-control"
                       name="mdp"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
@@ -241,12 +242,12 @@
                 </div>
 
                 <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="confirmation">confirmation</label>
+                  <label class="form-label" for="confirmation">Confirmation du mot de passe</label>
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
                       id="confirmation"
-                      class="password"
+                      class="form-control"
                       name="confirmation"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
@@ -259,12 +260,17 @@
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                     <label class="form-check-label" for="terms-conditions">
-                      I agree to
-                      <a href="javascript:void(0);">privacy policy & terms</a>
+                    J'accepte la politique de confidentialité
+                      <a href="javascript:void(0);" style="color: #0483c4;">politique de confidentialité</a>
+                      et les conditions
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100" type="submit" name="submit" id="submit" value="Valider votre inscription"  >Valider votre inscription</button>
+                <button style="color: #fff;
+    background-color: #0483c4;
+    border-color: #0483c4;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
+"class="btn d-grid w-100" type="submit" name="submit" id="submit" value="Valider votre inscription"  >Valider votre inscription</button>
               </form>
 
               <?php
@@ -323,11 +329,11 @@
                                 $message_retour = '<strong>Inscription réussie ! Bienvenue dans l\'équipe !</strong>';
                             // sinon renvoyer un message de doublon sur le mail
                             } else {
-                                $message_retour = '<strong>Un compte existe déjà pour cette adresse.</strong>';
+                                $message_retour = '<div class="alert alert-danger" role="alert"><i class="bx bx-error"></i>Un compte existe déjà pour cette adresse.</div>';
                             }
                         // renvoyer un message d'erreur sur la correspondance entre mdp et confirmation
                         } else {
-                            $message_retour = '<strong>Les mots de passe ne correspondent pas.</strong>';
+                            $message_retour = '<div class="alert alert-danger" role="alert"><strong>Les mots de passe ne correspondent pas.</strong></div>';
                         }
                         // renvoyer une erreur de mot de passe non valide
                         // } else {
@@ -335,19 +341,19 @@
                         // }
                         // renvoyer un message de mail non valide
                       } else {
-                       $message_retour = '<strong>L\'adresse mail n\'est pas disponible.</strong>';
+                       $message_retour = '<div class="alert alert-danger" role="alert"><strong>L\'adresse mail n\'est pas disponible.</strong></div>';
                       }
                         // renvoyer un message de non disponibilité du nom
                 } else {
-                    $message_retour = '<strong>L\'adresse mail n\'est pas valide.</strong>';
+                    $message_retour = '<div class="alert alert-danger" role="alert"><strong>L\'adresse mail n\'est pas valide.</strong></div>';
                 }
             // renvoyer un message de non disponibilité du nom
         } else {
-            $message_retour = '<strong>Ce matricule n\'est pas disponible.</strong>';
+            $message_retour = '<div class="alert alert-danger" role="alert"><strong>Ce matricule n\'est pas disponible.</strong></div>';
               }
         // renvoyer un message d'informations manquantes
     } else {
-        $message_retour = '<strong>Information manquante, toutes les informations doivent être saisies.</strong>';
+        $message_retour = '<div class="alert alert-danger" role="alert"><i class="bx bx-error"></i><strong> Information manquante, toutes les informations doivent être saisies.</strong></div>';
     }
     }
     
@@ -373,13 +379,11 @@ $_POST['message_retour'] = null;
 
 
 <p class="text-center">
-                <span>Already have an account?</span>
-                <a href="auth-login-basic.php">
-                  <span>Sign in instead</span>
+                <span>Vous avez déjà un compte?</span>
+                <a style="color: #0483c4;" href="auth-login-basic.php">
+                  <span>Connectez-vous</span>
                 </a>
               </p>
-
-              <a href="index.php">Retour à la page de connexion</a>
             </div>
           </div>
 
