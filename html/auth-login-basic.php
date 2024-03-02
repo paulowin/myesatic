@@ -245,7 +245,11 @@ $message_retour = null;
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit" name="submit" id="submit">Connexion</button>
+                  <button style="color: #fff;
+    background-color: #0483c4;
+    border-color: #0483c4;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
+" class="btn d-grid w-100" type="submit" name="submit" id="submit">Connexion</button>
                 </div>
               </form>
               
