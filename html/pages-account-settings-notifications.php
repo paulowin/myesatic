@@ -1,3 +1,66 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: auth-login-basic.php");
+    exit();
+}
+
+$conn = new PDO('mysql:host=localhost; dbname=myesatic', 'root', '');
+
+$id_utilisateur = $_SESSION['user_id'];
+
+$requete_info_utilisateur = $conn->prepare("SELECT * FROM user WHERE user_id = :user_id");
+$requete_info_utilisateur->bindParam(':user_id', $id_utilisateur);
+$requete_info_utilisateur->execute();
+$info_utilisateur = $requete_info_utilisateur->fetch(PDO::FETCH_ASSOC);
+
+if ($info_utilisateur) {
+
+    
+    // Ajoutez d'autres colonnes selon votre schéma de base de données
+
+?>
+
+<?php
+$conn=new PDO('mysql:host=localhost; dbname=myesatic', 'root', '') or die(mysql_error());
+if(isset($_POST['submit'])!=""){
+  $name=$_FILES['file']['name'];
+  $size=$_FILES['file']['size'];
+  $type=$_FILES['file']['type'];
+  $temp=$_FILES['file']['tmp_name'];
+  // $caption1=$_POST['caption'];
+  // $link=$_POST['link'];
+  $fname = date("YmdHis").'_'.$name;
+  $chk = $conn->query("SELECT * FROM  upload where name = '$name' ")->rowCount();
+  if($chk){
+    $i = 1;
+    $c = 0;
+	while($c == 0){
+    	$i++;
+    	$reversedParts = explode('.', strrev($name), 2);
+    	$tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
+    // var_dump($tname);exit;
+    	$chk2 = $conn->query("SELECT * FROM  upload where name = '$tname' ")->rowCount();
+    	if($chk2 == 0){
+    		$c = 1;
+    		$name = $tname;
+    	}
+    }
+}
+ $move =  move_uploaded_file($temp,"upload/".$fname);
+ if($move){
+ 	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
+	if($query){
+	header("location:add-doc.php");
+	}
+	else{
+	die(mysql_error());
+	}
+ }
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -27,7 +90,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Account settings - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Basic Inputs - Forms | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -63,11 +126,12 @@
     <script src="../assets/js/config.js"></script>
   </head>
 
-  <body>
+  <body style="    background-color: #e7ebf0 !important;">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
+
         <?php	
 	include_once('partials/navbar.php');
 ?>
@@ -81,6 +145,7 @@
 	include_once('partials/head.php');
 ?>
    
+
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
@@ -88,147 +153,120 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">
-                <span class="text-muted fw-light">Account Settings /</span> Notifications
-              </h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Support de Devoir</h4>
 
               <div class="row">
-                <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-account.php"
-                        ><i class="bx bx-user me-1"></i> Account</a
-                      >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);"
-                        ><i class="bx bx-bell me-1"></i> Notifications</a
-                      >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-connections.php"
-                        ><i class="bx bx-link-alt me-1"></i> Connections</a
-                      >
-                    </li>
-                  </ul>
+                <div class="col-md-6">
+                 
+                </div>
+                <div class="col-md-6">
+                
+                </div>
+
+             
+ <!-- File input -->
+ <!-- <div class="row">
+                <div class="col-md-6">
+ <div class="card">
+                    <h5 class="card-header">File input</h5>
+                    <div class="card-body">
+                      <div class="mb-3">
+
+				  <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
+  <div class="dz-message needsclick">
+    Drop files here or click to upload
+    <span class="note needsclick">(This is just a demo dropzone. Selected files are <span class="fw-medium">not</span> actually uploaded.)</span>
+  </div>
+  <div class="fallback">
+    <input name="file" type="file" />
+  </div>
+</form>
+<script>
+const dropzoneMulti = new Dropzone('#dropzone-multi', {
+  previewTemplate: previewTemplate,
+  parallelUploads: 1,
+  maxFilesize: 5,
+  addRemoveLinks: true
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+         
+
+                  <!-- File input -->
                   <div class="card">
-                    <!-- Notifications -->
-                    <h5 class="card-header">Recent Devices</h5>
+                    <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3>
                     <div class="card-body">
-                      <span
-                        >We need permission from your browser to show notifications.
-                        <span class="notificationRequest"><strong>Request Permission</strong></span></span
-                      >
-                      <div class="error"></div>
+                      <!-- <div class="mb-3">
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="formFile" />
+                      </div> -->
+                      <div class="mb-3">
+					  <form enctype="multipart/form-data" action="" name="form" method="post">
+                  <div class="alert alert-primary" role="alert">Vous avez une limite de 50 fichiers
+                  </div>
+                        <input class="form-control" name="file" type="file" id="file" multiple />
+						</div>
+						<div class="d-grid gap-2 col-6 mx-auto">
+						<button class="btn btn-lg" style="color: #fff;
+    background-color: #0483c4;
+    border-color: #0483c4;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
+" type="submit" name="submit" id="submit" value="Submit">Valider</button>
+						</div>
+					</form>
+                    
+					  
+                      <!-- <div>
+                        <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+                        <input class="form-control" type="file" id="formFileDisabled" disabled />
+                      </div> -->
                     </div>
-                    <div class="table-responsive">
-                      <table class="table table-striped table-borderless border-bottom">
-                        <thead>
-                          <tr>
-                            <th class="text-nowrap">Type</th>
-                            <th class="text-nowrap text-center">✉️ Email</th>
-                            <th class="text-nowrap text-center">🖥 Browser</th>
-                            <th class="text-nowrap text-center">👩🏻‍💻 App</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="text-nowrap">New for you</td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck1" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck2" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck3" checked />
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-nowrap">Account activity</td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck4" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck5" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck6" checked />
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-nowrap">A new browser used to sign in</td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck7" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck8" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck9" />
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-nowrap">A new device is linked</td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck10" checked />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck11" />
-                              </div>
-                            </td>
-                            <td>
-                              <div class="form-check d-flex justify-content-center">
-                                <input class="form-check-input" type="checkbox" id="defaultCheck12" />
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="card-body">
-                      <h6>When should we send you notifications?</h6>
-                      <form action="javascript:void(0);">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <select id="sendNotification" class="form-select" name="sendNotification">
-                              <option selected>Only when I'm online</option>
-                              <option>Anytime</option>
-                            </select>
-                          </div>
-                          <div class="mt-4">
-                            <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                            <button type="reset" class="btn btn-outline-secondary">Discard</button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <!-- /Notifications -->
                   </div>
                 </div>
               </div>
             </div>
+			
+
+  <div class="row-fluid">
+	        <div class="span12">
+	            <div class="container">
+		<br />
+	
+		<br />
+		<br />
+    <div class="card">
+		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+			<thead>
+				<tr>
+					<th width="90%" align="center">Fichiers</th>
+					<th align="center">Action</th>	
+				</tr>
+			</thead>
+			<?php
+			$query=$conn->query("select * from upload order by id desc");
+			while($row=$query->fetch()){
+				$name=$row['name'];
+			?>
+			<tr>
+			
+				<td>
+					&nbsp;<?php echo $name ;?>
+				</td>
+				<td>
+					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
+				</td>
+			</tr>
+			<?php }?>
+		</table>
+	</div>
+  </div>
+	</div>
+	</div>
+
             <!-- / Content -->
 
             <!-- Footer -->
@@ -295,7 +333,15 @@
 
     <!-- Page JS -->
 
+    <script src="../assets/js/form-basic-inputs.js"></script>
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+<?php
+} else {
+  die("Erreur lors de la récupération des informations de l'utilisateur");
+}
+
+?>
