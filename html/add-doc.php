@@ -102,7 +102,7 @@ if(isset($_POST['submit'])!=""){
     <script src="../assets/js/config.js"></script>
   </head>
 
-  <body>
+  <body style="    background-color: #e7ebf0 !important;">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -174,7 +174,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 
                   <!-- File input -->
                   <div class="card">
-                    <h5 class="card-header">Ajouter un fichier comme support du cours</h5>
+                    <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3>
                     <div class="card-body">
                       <!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
@@ -182,11 +182,16 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
                       </div> -->
                       <div class="mb-3">
 					  <form enctype="multipart/form-data" action="" name="form" method="post">
-                        <label for="formFileMultiple" class="form-label">Vous avez une limite de 50 fichiers</label>
+                  <div class="alert alert-primary" role="alert">Vous avez une limite de 50 fichiers
+                  </div>
                         <input class="form-control" name="file" type="file" id="file" multiple />
 						</div>
 						<div class="d-grid gap-2 col-6 mx-auto">
-						<button class="btn btn-primary btn-lg" type="submit" name="submit" id="submit" value="Submit">Valider</button>
+						<button class="btn btn-lg" style="color: #fff;
+    background-color: #0483c4;
+    border-color: #0483c4;
+    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
+" type="submit" name="submit" id="submit" value="Submit">Valider</button>
 						</div>
 					</form>
                     
@@ -209,12 +214,11 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 	
 		<br />
 		<br />
-		<br />
-		<br />
+    <div class="card">
 		<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 			<thead>
 				<tr>
-					<th width="90%" align="center">Files</th>
+					<th width="90%" align="center">Fichiers</th>
 					<th align="center">Action</th>	
 				</tr>
 			</thead>
@@ -229,12 +233,13 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 					&nbsp;<?php echo $name ;?>
 				</td>
 				<td>
-					<button class="alert-success"><a href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Download</a></button>
+					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
 				</td>
 			</tr>
 			<?php }?>
 		</table>
 	</div>
+  </div>
 	</div>
 	</div>
 
