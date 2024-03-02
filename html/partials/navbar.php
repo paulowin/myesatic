@@ -56,7 +56,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2" style="text-transform: none;">MyEsatic</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -71,72 +71,74 @@
             <li class="menu-item active">
               <a href="index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Tableau de bord</div>
               </a>
-            </li>
-
-            <!-- Layouts -->
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
-              </a>
-
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="layouts-without-menu.php" class="menu-link">
-                    <div data-i18n="Without menu">Without menu</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-without-navbar.php" class="menu-link">
-                    <div data-i18n="Without navbar">Without navbar</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
-                    <div data-i18n="Container">Container</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-fluid.php" class="menu-link">
-                    <div data-i18n="Fluid">Fluid</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-blank.php" class="menu-link">
-                    <div data-i18n="Blank">Blank</div>
-                  </a>
-                </li>
-              </ul>
             </li>
 
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Pages</span>
+              <span class="menu-header-text">Documents</span>
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
+                <i class="menu-icon tf-icons bx bx-library"></i>
+                <div data-i18n="Account Settings">Bibliothèque numérique</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.php" class="menu-link">
-                    <div data-i18n="Account">Account</div>
+                  <a href="pages-account-settings-account.php" class="menu-link"><i class='' ></i>
+                    <div data-i18n="Account">Supports de cours</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="pages-account-settings-notifications.php" class="menu-link">
-                    <div data-i18n="Notifications">Notifications</div>
+                    <div data-i18n="Notifications">Manuels et références</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="pages-account-settings-connections.php" class="menu-link">
-                    <div data-i18n="Connections">Connections</div>
+                    <div data-i18n="Connections">Documents administratifs</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-account-settings-connections.php" class="menu-link">
+                    <div data-i18n="Connections">Modèles et exemples</div>
                   </a>
                 </li>
               </ul>
+              <li class="menu-item">
+              <a href="Resultats.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div data-i18n="Basic">Résultats Académiques</div>
+              </a>
             </li>
+            <li class="menu-item">
+              <a href="cards-basic.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Formations complémentaires</div>
+              </a>
+            </li> 
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Plateforme de Discussion</span>
+            </li>
+            <li class="menu-item">
+              <a href="cards-basic.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Forum</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="cards-basic.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Messagerie Interne</div>
+              </a>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Autres</span>
+            </li>
+
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
@@ -178,6 +180,44 @@
                 </li>
               </ul>
             </li>
+
+            
+            <!-- Layouts -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Layouts</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="layouts-without-menu.php" class="menu-link">
+                    <div data-i18n="Without menu">Without menu</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-without-navbar.php" class="menu-link">
+                    <div data-i18n="Without navbar">Without navbar</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-container.php" class="menu-link">
+                    <div data-i18n="Container">Container</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-fluid.php" class="menu-link">
+                    <div data-i18n="Fluid">Fluid</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="layouts-blank.php" class="menu-link">
+                    <div data-i18n="Blank">Blank</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
             <!-- Cards -->
