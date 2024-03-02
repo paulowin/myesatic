@@ -11,6 +11,22 @@ setcookie("mail", "", time()+(60*60*24*14), "", "", false, true);
 setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
 setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
 
+
+
+  // $requete->bindParam(':mail', $mail);
+  // $requete->bindParam(':mdp', $mdp);
+  // $requete->execute();
+
+  // $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
+
+  // if ($utilisateur) {
+      
+
+  //     header("Location: index.php");
+  //     exit();
+  // } 
+
+
 $message_retour = null;
 
 ?>
@@ -38,20 +54,23 @@ $message_retour = null;
                 } else {
                     $_SESSION['user_id'] = $donnee_membre['user_id'];
                     $_SESSION['mail'] = $mail;
-                    $_SESSION['user_id'] = true;
                     $message_retour = "Connexion réussie!";
+                    
                     // Tester si le membre veut rester connecté
                     if (isset($_POST['connexion_auto'])) {
                        setcookie("mail", $donnee_membre['mail'], time()+(60*60*24*14), "", "", false, true);
                        setcookie("mdp", $donnee_membre['mdp'], time()+(60*60*24*14), "", "", false, true);
                        setcookie("user_id", $donnee_membre['user_id'], time()+(60*60*24*14), "", "", false, true);
+                       $_SESSION['mail'] = $donnee_membre['mail'];
+                       $_SESSION['user_id'] = $donnee_membre['user_id'];
                        header("Location: index.php");
                        exit();
                       } else {
                         setcookie("mail","", time()+(60*60*24*14), "", "", false, true);
                         setcookie("mdp", "", time()+(60*60*24*14), "", "", false, true);
                         setcookie("user_id", "", time()+(60*60*24*14), "", "", false, true);
-                        $_SESSION['id'] = $username;
+                        $_SESSION['mail'] = $donnee_membre['mail'];
+                        $_SESSION['user_id'] = $donnee_membre['user_id'];
                         header("Location: index.php");
                         exit();
                     }
@@ -245,11 +264,7 @@ $message_retour = null;
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button style="color: #fff;
-    background-color: #0483c4;
-    border-color: #0483c4;
-    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
-" class="btn d-grid w-100" type="submit" name="submit" id="submit">Connexion</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit" name="submit" id="submit">Connexion</button>
                 </div>
               </form>
               

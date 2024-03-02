@@ -1,12 +1,28 @@
 <?php
 session_start();
 
-
-if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: auth-login-basic.php");
     exit();
 }
+
+$conn = new PDO('mysql:host=localhost; dbname=myesatic', 'root', '');
+
+$id_utilisateur = $_SESSION['user_id'];
+
+$requete_info_utilisateur = $conn->prepare("SELECT * FROM user WHERE user_id = :user_id");
+$requete_info_utilisateur->bindParam(':user_id', $id_utilisateur);
+$requete_info_utilisateur->execute();
+$info_utilisateur = $requete_info_utilisateur->fetch(PDO::FETCH_ASSOC);
+
+if ($info_utilisateur) {
+
+    
+    // Ajoutez d'autres colonnes selon votre schéma de base de données
+
 ?>
+<!-- Ajoutez ce lien où vous le souhaitez sur votre page -->
+<a href="deconnexion.php">Se Déconnecter</a>
 
 <!DOCTYPE html>
 
@@ -74,77 +90,7 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
 
-    <style>
-    .content-wrapper {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f8f9fa"/><circle cx="50" cy="50" r="30" fill="#6c757d"/></svg>');
-      background-repeat: repeat;
-      padding: 20px; /* Juste pour démonstration */
-    }
-    body {
-  background-color: #f8f9fa;
-}
-
-.calculator {
-  max-width: 300px;
-  margin: 0 auto;
-  margin-top: 50px;
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 15px; /* Ajout du rayon de bordure */
-  border: 2px solid #ced4da; /* Ajout de la bordure */
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-}
-
-.btn {
-  font-size: 18px;
-  margin: 5px;
-}
-
-.btn-primary, .btn-warning, .btn-success {
-  font-weight: bold;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
-.btn-warning:hover {
-  background-color: #ffae00;
-  border-color: #ffae00;
-}
-
-.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-  border-color: #218838;
-}       body {
-            margin: 0;
-            font-family: var(--bs-body-font-family);
-            font-size: var(--bs-body-font-size);
-            font-weight: var(--bs-body-font-weight);
-            line-height: var(--bs-body-line-height);
-            color: var(--bs-body-color);
-            text-align: var(--bs-body-text-align);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f8f9fa"/><circle cx="50" cy="50" r="30" fill="#6c757d"/></svg>')!important;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: rgba(67, 89, 113, 0);
-        }
-  </style>
+    
   </head>
 
   <body>
@@ -179,7 +125,8 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h2 class="card-title" style="color: #0483c4;">Bienvenue Jean Yves ! 🎉</h2>
+                          <h2 class="card-title" style="color: #0483c4;">Bienvenue 
+                          <?php  echo $info_utilisateur['nom'] ?>🎉</h2>
                           <p class="mb-4">
                             N'hesites pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
                           </p>
@@ -267,40 +214,6 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
     </tbody>
                       </tbody>
                     </table>
-                    <div class="container">
-                  <div class="calculator">
-                    <input type="text" class="form-control mb-2" id="display" readonly>
-                    <div class="row">
-                      <button class="btn btn-primary col-3" onclick="clearDisplay()">C</button>
-                      <button class="btn btn-primary col" onclick="appendValue('(')"> ( </button>
-                      <button class="btn btn-primary col" onclick="appendValue(')')"> ) </button>
-                      <button class="btn btn-warning col" onclick="appendValue('/')"> / </button>
-                    </div>
-                    <div class="row">
-                      <button class="btn btn-light col" onclick="appendValue('7')">7</button>
-                      <button class="btn btn-light col" onclick="appendValue('8')">8</button>
-                      <button class="btn btn-light col" onclick="appendValue('9')">9</button>
-                      <button class="btn btn-warning col" onclick="appendValue('*')"> *</button>
-                    </div>
-                    <div class="row">
-                      <button class="btn btn-light col" onclick="appendValue('4')">4</button>
-                      <button class="btn btn-light col" onclick="appendValue('5')">5</button>
-                      <button class="btn btn-light col" onclick="appendValue('6')">6</button>
-                      <button class="btn btn-warning col" onclick="appendValue('-')"> - </button>
-                    </div>
-                    <div class="row">
-                      <button class="btn btn-light col" onclick="appendValue('1')">1</button>
-                      <button class="btn btn-light col" onclick="appendValue('2')">2</button>
-                      <button class="btn btn-light col" onclick="appendValue('3')">3</button>
-                      <button class="btn btn-warning col" onclick="appendValue('+')"> + </button>
-                    </div>
-                    <div class="row">
-                      <button class="btn btn-light col-6" onclick="appendValue('0')">0</button>
-                      <button class="btn btn-light col">.</button>
-                      <button class="btn btn-success col" onclick="calculate()">=</button>
-                    </div>
-                  </div>
-                </div>
                   </div>
                 </div>
 
@@ -345,3 +258,9 @@ if (!isset($_SESSION['user_id'])  ||  $_SESSION["user_id"] !== true) {
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+<?php
+} else {
+  die("Erreur lors de la récupération des informations de l'utilisateur");
+}
+
+?>
