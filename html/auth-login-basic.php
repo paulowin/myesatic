@@ -246,7 +246,7 @@ $message_retour = null;
 
 <p id='message-retour'><strong><?php echo $message_retour; ?></strong></p>
 <a href="deconnexion.php">Déconnexion</a>
-    <a href="upload.php">Ajouter document</a>
+    
               <p class="text-center">
                 <span>Nouveau sur notre plateforme ?</span>
                 <a href="auth-register-basic.php">
