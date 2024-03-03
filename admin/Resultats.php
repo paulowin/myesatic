@@ -1,3 +1,136 @@
+<?php
+require('fpdf/fpdf.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les notes
+    $note1 = $_POST['note1'];
+    $note2 = $_POST['note2'];
+    $note3 = $_POST['note3'];
+    $note4 = $_POST['note4'];
+    $note5 = $_POST['note5'];
+    $note6 = $_POST['note6'];
+    $note7 = $_POST['note7'];
+    $note8 = $_POST['note8'];
+    $note9 = $_POST['note9'];
+    $note10 = $_POST['note10'];
+
+   
+    // Calculer les moyennes
+    $moyenne = ($note1 + $note2 + $note3 + $note4 + $note5 + $note6 + $note7 + $note8 + $note9 + $note10) / 10;
+    $moyelectro =($note1 + $note2) / 2;
+    $moycin = ($note3 + $note4) / 2;
+    $moyado = ($note5 + $note6) / 2;
+    $moyalgo = ($note7 + $note8) / 2;
+    $moydroit = ($note9 + $note10) / 2;
+    $mue_1 = ($moyelectro * 2 + $moycin * 3) / 5;
+    $mue_2 = ($moyado * 1 + $moyalgo * 3) / 4;
+    $mue_3 = $moydroit;
+    $mue_min = $mue_3;
+    $mue_maj = ($mue_1 * 5 + $mue_2 * 4) / 9;
+    $moy = ($mue_maj * 9 + $mue_min * 2) / 11; 
+
+    // Créer un nouvel objet FPDF
+    $pdf = new FPDF('L', 'mm', 'A3');
+  
+    // Ajouter une page
+    $pdf->AddPage();
+    
+    // Définir la police
+    $pdf->SetFont('Arial','B',16);
+    
+    
+    // Titre
+    
+    $pdf->Cell(0,10,'Bulletin de notes',0,1,'C');
+    
+  // Créer un tableau
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(50, 20, 'UE Majeures', 1, 0, 'C');
+$pdf->Cell(100, 20, 'Elements constitutifs', 1, 0, 'C');
+$pdf->Cell(30, 20, 'NOTE 1', 1, 0, 'C');
+$pdf->Cell(30, 20, 'NOTE 2', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. CLASSE', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. UE', 1, 0, 'C');
+$pdf->Cell(30, 20, 'CREDIT', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. UE Maj', 1, 0, 'C');
+$pdf->Cell(30, 20, 'MOYENNE', 1, 1, 'C');
+
+$pdf->Cell(50, 40, 'ELECTRICITE', 1, 0, 'C');
+$pdf->Cell(100, 20, 'Electrostatique', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note1 , 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note2, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$moyelectro, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$mue_1, 1, 0, 'C');
+$pdf->Cell(30, 20, '2', 1, 0, 'C');
+$pdf->Cell(30, 20, ''. number_format($mue_maj, 2, '.', ''),1, 0, 'C');
+$pdf->Cell(30, 20, ''. number_format($moy, 2, '.', ''),1, 1, 'C');
+// $pdf->Cell(50, 20, 'ELECTROSTAT', 1, 0, 'C');
+
+
+$pdf->Cell(50, 0, '', 0, 0, 'C');
+$pdf->Cell(100, 20, 'Electrocinetique', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note3, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note4, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$moycin, 1, 0, 'C');
+$pdf->Cell(30, 20, '', 1, 0, 'C');
+$pdf->Cell(30, 20, '3', 1, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
+
+// Ajouter des données dans le tableau
+$pdf->Cell(50, 40, 'INFORMATIQUE', 1, 0, 'C');
+$pdf->Cell(100, 20, 'Architecture des ordinateurs', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note5, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note6, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$moyado, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$mue_2, 1, 0, 'C');
+$pdf->Cell(30, 20, '1', 1, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
+
+$pdf->Cell(50, 0, '', 0, 0, 'C');
+$pdf->Cell(100, 20, 'Initiation en algorithmique', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note7, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note8, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$moyalgo, 1, 0, 'C');
+$pdf->Cell(30, 20, '', 1, 0, 'C');
+$pdf->Cell(30, 20, '3', 1, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
+
+// UE Mineures
+$pdf->Cell(50, 20, 'UE Mineures', 1, 0, 'C');
+$pdf->Cell(100, 20, 'Elements constitutifs', 1, 0, 'C');
+$pdf->Cell(30, 20, 'NOTE 1', 1, 0, 'C');
+$pdf->Cell(30, 20, 'NOTE 2', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. CLASSE', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. UE', 1, 0, 'C');
+$pdf->Cell(30, 20, 'CREDIT', 1, 0, 'C');
+$pdf->Cell(30, 20, 'M. UE Min', 1, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
+
+$pdf->Cell(50, 20, 'Droit', 1, 0, 'C');
+$pdf->Cell(100, 20, 'Introduction au Droit', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note9, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$note10, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$moydroit, 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$mue_3, 1, 0, 'C');
+$pdf->Cell(30, 20, '1', 1, 0, 'C');
+$pdf->Cell(30, 20, ''.$mue_min, 1, 0, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
+
+// Et ainsi de suite pour les autres éléments constitutifs...
+
+    
+    // Nom du fichier PDF de sortie
+    $file_name = 'bulletin_de_notes.pdf';
+    
+    // Sortie du PDF en téléchargement
+    $pdf->Output($file_name, 'D');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -56,7 +189,56 @@
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #0483c4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
@@ -94,214 +276,64 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
           <div class="row">
-          <h5 class="py-3 my-4">Résultats Académiques</h5>
-                <div class="col">
-                  <div class="nav-align-top mb-4">
-                    <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
-                      <li class="nav-item">
-                        <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-home" aria-controls="navs-pills-justified-home" aria-selected="true">
-                          <i class="tf-icons bx bx-home"></i> Semestre 1 
-                          <span class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span>
-                        </button>
-                      </li>
-                      <li class="nav-item">
-                        <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-justified-profile" aria-controls="navs-pills-justified-profile" aria-selected="false">
-                          <i class="tf-icons bx bx-user"></i> Semestre 2
-                        </button>
-                      </li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="tab-pane fade active show" id="navs-pills-justified-home" role="tabpanel">
-                      <table class="table">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Eléments constitutifs des Unités d'Enseignement (Partie 1)</th>
-                            <th scope="col">Note 1</th>
-                            <th scope="col">Note 2</th>
-                            <th scope="col">Note 3</th>
-                            <th scope="col">Note 4</th>
-                            <th scope="col">Note 5</th>
-                            <th scope="col">Moyenne</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Logique et raisonnements mathématiques</th>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Fonction à une variable réelle</th>
-                            <td>16</td>
-                            <td>17</td>
-                            <td>16</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Optique géométrique</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Electrostatique-Magnétotatique</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Architecture des ordinateurs</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Anglais</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Introduction au droit</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <!-- Ajoutez ici d'autres lignes pour d'autres matières -->
-                        </tbody>
-                    </table>
+          <h1 class="py-3 my-4">Résultats Académiques</h1>
+          <div class="container">
+        <h3>Entrez les notes pour générer le bulletin de notes</h3>
+        
+        <form method="post">
 
-                    <hr class="container-m-nx border-light mt-5">
-                    
-                      </div>
+            
+             
+            <label for="uem">UE MAJEUR:</label>
 
-                      <table class="table">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Eléments constitutifs des Unités d'Enseignement (Partie 2)</th>
-                            <th scope="col">Note 1</th>
-                            <th scope="col">Note 2</th>
-                            <th scope="col">Note 3</th>
-                            <th scope="col">Note 4</th>
-                            <th scope="col">Note 5</th>
-                            <th scope="col">Moyenne</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Structures algébriques</th>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Géométrie différentielle élémentaire</th>
-                            <td>16</td>
-                            <td>17</td>
-                            <td>16</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Physique des dispositifs électroniques</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Electrocinétique</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Initiation en algorithmique</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Français</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Introduction au droit</th>
-                            <td>14</td>
-                            <td>13</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>14</td>
-                            <td>16</td>
-                        </tr>
-                        <!-- Ajoutez ici d'autres lignes pour d'autres matières -->
-                        </tbody>
-                    </table>
+            <label for="">Electricité:</label>
+
+            <label for="">Electrostatique:</label>
+            <label for="note1">Note 1 :</label>
+            <input type="text" name="note1" id="note1" />
+            
+            <label for="note2">Note 2 :</label>
+            <input type="text" name="note2" id="note2" />
+            
+            <label for="">Electrocinétique:</label> 
+
+            <label for="note3">Note 1 :</label>
+            <input type="text" name="note3" id="note3" />
+
+            <label for="note4">Note 2 :</label>
+            <input type="text" name="note4" id="note4" />
+
+            <label for="">INFORMATIQUE :</label>
+
+            <label for="">Ado:</label>
+            <label for="note5">Note 1 :</label>
+            <input type="text" name="note5" id="note5" />
+            
+            <label for="note6">Note 2 :</label>
+            <input type="text" name="note6" id="note6" />
+            
+            <label for="">Algo:</label> 
+
+            <label for="note7">Note 1 :</label>
+            <input type="text" name="note7" id="note7" />
+
+            <label for="note8">Note 2 :</label>
+            <input type="text" name="note8" id="note8" />
 
 
-                      <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
-                        <p>
-                          Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
-                          cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
-                          cheesecake fruitcake.
-                        </p>
-                        <p class="mb-0">
-                          Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
-                          cotton candy liquorice caramels.
-                        </p>
-                      </div>
-                      <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
-                        <p>
-                          Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
-                          cupcake gummi bears cake chocolate.
-                        </p>
-                        <p class="mb-0">
-                          Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
-                          roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
-                          jelly-o tart brownie jelly.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <label for="uem">UE MINEUR:</label>
+            <label for="">Droit:</label> 
+            
+            <label for="note9">Note 1 :</label>
+            <input type="text" name="note9" id="note9" />
+            
+            <label for="note10">Note 2 :</label>
+            <input type="text" name="note10" id="note10" />
+
+            
+            <input type="submit" value="Générer Bulletin de Notes en PDF">
+        </form>
+    </div>
               </div>
 
               </div>
