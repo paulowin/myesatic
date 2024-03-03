@@ -285,13 +285,12 @@ if ($info_utilisateur) {
             </div>
             <!-- / Content -->
 
-<<<<<<< HEAD
-=======
+
             <!-- Footer -->
            
             <!-- / Footer -->
 
->>>>>>> 4d61bdccf1a497283f13262975d92fd6273aed61
+
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
