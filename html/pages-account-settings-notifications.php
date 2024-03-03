@@ -41,18 +41,18 @@ if(isset($_POST['submit'])!=""){
     	$reversedParts = explode('.', strrev($name), 2);
     	$tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
     // var_dump($tname);exit;
-    	$chk2 = $conn->query("SELECT * FROM  upload where name = '$tname' ")->rowCount();
+    	$chk2 = $conn->query("SELECT * FROM  manuel where name = '$tname' ")->rowCount();
     	if($chk2 == 0){
     		$c = 1;
     		$name = $tname;
     	}
     }
 }
- $move =  move_uploaded_file($temp,"upload/".$fname);
+ $move =  move_uploaded_file($temp,"../storage/manuel/".$fname);
  if($move){
- 	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
+ 	$query=$conn->query("insert into manuel(name,fname)values('$name','$fname')");
 	if($query){
-	header("location:add-doc.php");
+	header("pages-account-settings-connections.php");
 	}
 	else{
 	die(mysql_error());
@@ -153,7 +153,7 @@ if(isset($_POST['submit'])!=""){
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Support de Devoir</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Manuels et références</h4>
 
               <div class="row">
                 <div class="col-md-6">
@@ -247,7 +247,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 				</tr>
 			</thead>
 			<?php
-			$query=$conn->query("select * from upload order by id desc");
+			$query=$conn->query("select * from manuel order by id desc");
 			while($row=$query->fetch()){
 				$name=$row['name'];
 			?>
