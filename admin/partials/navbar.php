@@ -89,11 +89,11 @@
                     <div data-i18n="Account">Supports de cours</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a href="pages-account-settings-account.php" class="menu-link"><i class='' ></i>
                     <div data-i18n="Account">Modification de profil</div>
                   </a>
-                </li>
+                </li> -->
                 <li class="menu-item">
                   <a href="pages-account-settings-notifications.php" class="menu-link">
                     <div data-i18n="Notifications">Manuels et références</div>
@@ -101,14 +101,14 @@
                 </li>
                 <li class="menu-item">
                   <a href="pages-account-settings-connections.php" class="menu-link">
-                    <div data-i18n="Connections">Documents administratifs</div>
+                    <div data-i18n="Connections">Travaux dirigés et Devoirs</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a href="pages-account-settings-connections.php" class="menu-link">
                     <div data-i18n="Connections">Modèles et exemples</div>
                   </a>
-                </li>
+                </li> -->
               </ul>
               <li class="menu-item">
               <a href="Resultats.php" class="menu-link">

@@ -27,7 +27,7 @@ if ($info_utilisateur) {
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -53,7 +53,7 @@ if ($info_utilisateur) {
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>MyESATIC</title>
 
     <meta name="description" content="" />
 
@@ -128,7 +128,7 @@ if ($info_utilisateur) {
                           <h2 class="card-title" style="color: #0483c4;">Bienvenue 
                           <?php  echo $info_utilisateur['nom'] ?>🎉</h2>
                           <p class="mb-4">
-                            N'hesites pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
+                            N'hésitez pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
                           </p>
 
                           <a href="javascript:;" class="btn btn-sm" style="color: #0483c4;">Voir plus</a>
@@ -156,6 +156,7 @@ if ($info_utilisateur) {
                   <div class="row">
                       <div class="card">
                         <div class="card-body">
+                        <h2 class="card-title" style="color: #0483c4;"> SEMESTRE 1 - PREMIERE PARTIE </h2>
                         <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>

@@ -1,7 +1,31 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: auth-login-basic.php");
+    exit();
+}
+
+$conn = new PDO('mysql:host=localhost; dbname=myesatic', 'root', '');
+
+$id_utilisateur = $_SESSION['user_id'];
+
+$requete_info_utilisateur = $conn->prepare("SELECT * FROM user WHERE user_id = :user_id");
+$requete_info_utilisateur->bindParam(':user_id', $id_utilisateur);
+$requete_info_utilisateur->execute();
+$info_utilisateur = $requete_info_utilisateur->fetch(PDO::FETCH_ASSOC);
+
+if ($info_utilisateur) {
+
+    
+    // Ajoutez d'autres colonnes selon votre schéma de base de données
+
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -27,7 +51,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Account settings - Account | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Account settings - Account | MyESATIC</title>
 
     <meta name="description" content="" />
 
@@ -154,13 +178,23 @@
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value="John"
+                              value="<?php  echo $info_utilisateur['nom'] ?>"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                            <input class="form-control" type="text" name="lastName" id="lastName" value="<?php  echo $info_utilisateur['nom'] ?>" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Birth</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="organization"
+                              name="organization"
+                              value="<?php  echo $info_utilisateur['birth'] ?>"
+                            />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -169,18 +203,48 @@
                               type="text"
                               id="email"
                               name="email"
-                              value="john.doe@example.com"
+                              value="<?php  echo $info_utilisateur['nom'] ?>"
                               placeholder="john.doe@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Organization</label>
+                            <label for="organization" class="form-label">Matricule</label>
                             <input
                               type="text"
                               class="form-control"
                               id="organization"
                               name="organization"
-                              value="ThemeSelection"
+                              value="<?php  echo $info_utilisateur['matricule'] ?>"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Niveau d'etude</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="organization"
+                              name="organization"
+                              value="<?php  echo $info_utilisateur['niveau_etude'] ?>"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Filiere</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="organization"
+                              name="organization"
+                              value="<?php  echo $info_utilisateur['filiere'] ?>"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">Classe</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="organization"
+                              name="organization"
+                              value="<?php  echo $info_utilisateur['classe'] ?>"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -197,6 +261,16 @@
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
+                            <label for="organization" class="form-label">mdp</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="organization"
+                              name="organization"
+                              value="<?php  echo $info_utilisateur['mdp'] ?>"
+                            />
+                          </div>
+                          <!-- <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Address</label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                           </div>
@@ -214,8 +288,8 @@
                               placeholder="231465"
                               maxlength="6"
                             />
-                          </div>
-                          <div class="mb-3 col-md-6">
+                          </div> -->
+                          <!-- <div class="mb-3 col-md-6">
                             <label class="form-label" for="country">Country</label>
                             <select id="country" class="select2 form-select">
                               <option value="">Select</option>
@@ -288,7 +362,7 @@
                               <option value="pound">Pound</option>
                               <option value="bitcoin">Bitcoin</option>
                             </select>
-                          </div>
+                          </div> -->
                         </div>
                         <div class="mt-2">
                           <button type="submit" class="btn btn-primary me-2">Save changes</button>
@@ -298,7 +372,7 @@
                     </div>
                     <!-- /Account -->
                   </div>
-                  <div class="card">
+                  <!-- <div class="card">
                     <h5 class="card-header">Delete Account</h5>
                     <div class="card-body">
                       <div class="mb-3 col-12 mb-0">
@@ -322,43 +396,14 @@
                         <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
                       </form>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
             <!-- / Content -->
 
             <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
-                </div>
-              </div>
-            </footer>
+           
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -397,3 +442,9 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+<?php
+} else {
+  die("Erreur lors de la récupération des informations de l'utilisateur");
+}
+
+?>

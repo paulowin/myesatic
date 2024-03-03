@@ -1,50 +1,13 @@
-<?php 
-$message_retour = null; 
+<?php
 session_start();
+
+// Détruire toutes les variables de session
+session_unset();
+
+// Détruire la session
+session_destroy();
+
+// Rediriger vers la page de connexion
+header("Location: auth-login-basic.php");
+exit();
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-    <link rel="stylesheet" href="css_espace_membres.css">
-    <title>Déconnexion de votre espace personnel</title>
-</head>
-<body>
-<div id="main-container">
-    <h1>Deconnexion :</h1>    
-
-<?php 
-
-if (!(empty($_SESSION['mail']))) {    
-    ?>
-    <div id="formulaire">
-        <p>Souhaitez-vous déconnecter de <?php echo $_SESSION['mail'] ?></p>
-        <form action="" method="POST">
-            <input type="submit" name="submit" id="submit" value="Se déconnecter">
-        </form>
-    <?php
-    if (!(empty($_POST['submit']))){
-        // Suppression des variables de session et de la session
-        $_SESSION = array();
-        session_destroy();
-        
-        // Suppression des cookies de connexion automatique
-        setcookie('mail', '');
-        setcookie('mdp', '');
-        $message_retour = "Déconnexion réussie";
-    }
-} else {
-    $message_retour = "Vous n'êtes pas connecté." ;
-}
-?>
-
-<p id='message-retour'><strong><?php echo $message_retour; ?></strong></p>
-
-<a href="inscription.php">Inscrivez-vous</a>
-<a href="index.php">Connectez-vous</a>
-
-</div> 
-
-</body>
-</html>

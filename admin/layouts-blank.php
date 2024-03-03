@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Blank layout - Layouts | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Blank layout - Layouts | MyESATIC</title>
 
     <meta name="description" content="" />
 
