@@ -33,28 +33,23 @@
 
   <!-- Content -->
   <div class="container flex-grow-1 container-p-y my-2">
-    <h3>Thank you for using Sneat - Free Bootstrap 5 HTML Admin Template! 😇</h3>
-    <p>If you’re a developer looking for most Powerful & comprehensive Bootstrap 5 HTML Admin Dashboard Template built
-      for developers, rich with features, and highly customizable look no further than Sneat. We’ve followed the highest
-      industry standards to bring you the very best admin template that is not only fast and easy to use but highly
-      scalable. Offering ultimate convenience and flexibility, you’ll be able to build whatever application you want
-      with very little hassle.</p>
+ 
 
     <!-- Examples -->
     <div class="row mt-sm-4 mt-3">
       <div class="col-12 mb-3">
         <div class="card">
-          <h5 class="card-header">Template Links</h5>
+          <h5 class="card-header">Accès des différents actionnaires</h5>
           <!-- Template Demo Links -->
           <table class="table">
             <tbody>
               <tr>
                 <th>User</th>
-                <td><a href="html/index.php" target="_blank">  User </a></td>
+                <td><a href="html/index.php" target="_blank"> Connexion User </a></td>
               </tr>
               <tr>
                 <th>Admin</th>
-                <td><a href="admin/index.php" target="_blank"> Admin </a></td>
+                <td><a href="admin/index.php" target="_blank"> Connexion Admin </a></td>
               </tr>
             </tbody>
           </table>
