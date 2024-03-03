@@ -27,7 +27,7 @@ if(isset($_POST['submit'])!=""){
 
  $move =  move_uploaded_file($temp,"../storage/upload/".$fname);
  if($move){
- 	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
+ 	$query=$conn->query("insert into upload(name,fname,classe)values('$name','$fname','$classe')");
 	if($query){
 	header("location:add-doc.php");
 	}
@@ -201,11 +201,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
                       </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
 			
 
   <div class="row-fluid">
@@ -220,6 +216,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 			<thead>
 				<tr>
 					<th width="90%" align="center">Fichiers</th>
+          <th align="center">Classe</th>	
 					<th align="center">Action</th>	
 				</tr>
 			</thead>
@@ -227,11 +224,16 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 			$query=$conn->query("select * from upload order by id desc");
 			while($row=$query->fetch()){
 				$name=$row['name'];
+        $classe=$row['classe'];
 			?>
 			<tr>
 			
-				<td>
+        <td>
 					&nbsp;<?php echo $name ;?>
+				</td>
+        
+				<td>
+					&nbsp;<?php echo $classe ;?>
 				</td>
 				<td>
 					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
