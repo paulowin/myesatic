@@ -32,7 +32,7 @@ if(isset($_POST['submit'])!=""){
   // $caption1=$_POST['caption'];
   // $link=$_POST['link'];
   $fname = date("YmdHis").'_'.$name;
-  $chk = $conn->query("SELECT * FROM  upload where name = '$name' ")->rowCount();
+  $chk = $conn->query("SELECT * FROM  td where name = '$name' ")->rowCount();
   if($chk){
     $i = 1;
     $c = 0;
@@ -41,16 +41,16 @@ if(isset($_POST['submit'])!=""){
     	$reversedParts = explode('.', strrev($name), 2);
     	$tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
     // var_dump($tname);exit;
-    	$chk2 = $conn->query("SELECT * FROM  manuel where name = '$tname' ")->rowCount();
+    	$chk2 = $conn->query("SELECT * FROM  td where name = '$tname' ")->rowCount();
     	if($chk2 == 0){
     		$c = 1;
     		$name = $tname;
     	}
     }
 }
- $move =  move_uploaded_file($temp,"../storage/manuel/".$fname);
+ $move =  move_uploaded_file($temp,"../storage/td/".$fname);
  if($move){
- 	$query=$conn->query("insert into manuel(name,fname)values('$name','$fname')");
+ 	$query=$conn->query("insert into td(name,fname)values('$name','$fname')");
 	if($query){
 	header("pages-account-settings-connections.php");
 	}
@@ -153,7 +153,7 @@ if(isset($_POST['submit'])!=""){
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Manuels et références</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Documents /</span> Travaux dirigés et Devoirs</h4>
 
               <div class="row">
                 <div class="col-md-6">
@@ -247,7 +247,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 				</tr>
 			</thead>
 			<?php
-			$query=$conn->query("select * from manuel order by id desc");
+			$query=$conn->query("select * from td order by id desc");
 			while($row=$query->fetch()){
 				$name=$row['name'];
 			?>
@@ -257,7 +257,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 					&nbsp;<?php echo $name ;?>
 				</td>
 				<td>
-					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
+					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc2.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
 				</td>
 			</tr>
 			<?php }?>

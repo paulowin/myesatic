@@ -52,7 +52,7 @@ if(isset($_POST['submit'])!=""){
  if($move){
  	$query=$conn->query("insert into manuel(name,fname)values('$name','$fname')");
 	if($query){
-	header("pages-account-settings-connections.php");
+	header("pages-account-settings-notifications.php");
 	}
 	else{
 	die(mysql_error());
@@ -197,39 +197,13 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
          
 
                   <!-- File input -->
-                  <div class="card">
-                    <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3>
-                    <div class="card-body">
-                      <!-- <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile" />
-                      </div> -->
-                      <div class="mb-3">
-					  <form enctype="multipart/form-data" action="" name="form" method="post">
-                  <div class="alert alert-primary" role="alert">Vous avez une limite de 50 fichiers
-                  </div>
-                        <input class="form-control" name="file" type="file" id="file" multiple />
-						</div>
-						<div class="d-grid gap-2 col-6 mx-auto">
-						<button class="btn btn-lg" style="color: #fff;
-    background-color: #0483c4;
-    border-color: #0483c4;
-    box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
-" type="submit" name="submit" id="submit" value="Submit">Valider</button>
-						</div>
-					</form>
-                    
+             
 					  
                       <!-- <div>
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
                       </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-			
+      
 
   <div class="row-fluid">
 	        <div class="span12">
@@ -257,7 +231,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 					&nbsp;<?php echo $name ;?>
 				</td>
 				<td>
-					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
+					<button class="btn" style="color: #fff; background-color: #0483c4; border-color: #0483c4; box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);"><a style="color: #ffffff;" href="dl-doc1.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>">Télécharger</a></button>
 				</td>
 			</tr>
 			<?php }?>
