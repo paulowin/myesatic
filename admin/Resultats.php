@@ -41,8 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Titre
     
-    $pdf->Cell(0,10,'Bulletin de notes',0,1,'C');
-    
+    $pdf->Cell(0,10,'BULLETINS DE SEMESTRE',0,1,'C');
+    // Ajout d'espace
+$pdf->Ln(10);
+    $pdf->Cell(0,10,'CLASSE : SRIT 1A',0,1,);
+    $pdf->Cell(0,10,'NOM : KOFFI LOUKOU PAUL-ERWIN ',0,1,);
+    $pdf->Cell(0,10,'MATRICULE: 23-ESATIC0346AL',0,1,);
+
+// Ajout d'espace
+$pdf->Ln(10);
+
   // Créer un tableau
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(50, 20, 'UE Majeures', 1, 0, 'C');
@@ -53,7 +61,7 @@ $pdf->Cell(30, 20, 'M. CLASSE', 1, 0, 'C');
 $pdf->Cell(30, 20, 'M. UE', 1, 0, 'C');
 $pdf->Cell(30, 20, 'CREDIT', 1, 0, 'C');
 $pdf->Cell(30, 20, 'M. UE Maj', 1, 0, 'C');
-$pdf->Cell(30, 20, 'MOYENNE', 1, 1, 'C');
+$pdf->Cell(30, 20, '', 0, 1, 'C');
 
 $pdf->Cell(50, 40, 'ELECTRICITE', 1, 0, 'C');
 $pdf->Cell(100, 20, 'Electrostatique', 1, 0, 'C');
@@ -62,8 +70,8 @@ $pdf->Cell(30, 20, ''.$note2, 1, 0, 'C');
 $pdf->Cell(30, 20, ''.$moyelectro, 1, 0, 'C');
 $pdf->Cell(30, 20, ''.$mue_1, 1, 0, 'C');
 $pdf->Cell(30, 20, '2', 1, 0, 'C');
-$pdf->Cell(30, 20, ''. number_format($mue_maj, 2, '.', ''),1, 0, 'C');
-$pdf->Cell(30, 20, ''. number_format($moy, 2, '.', ''),1, 1, 'C');
+$pdf->Cell(30, 80, ''. number_format($mue_maj, 2, '.', ''),1, 0, 'C');
+$pdf->Cell(30, 20, '',0, 1, 'C');
 // $pdf->Cell(50, 20, 'ELECTROSTAT', 1, 0, 'C');
 
 
@@ -119,8 +127,10 @@ $pdf->Cell(30, 20, '1', 1, 0, 'C');
 $pdf->Cell(30, 20, ''.$mue_min, 1, 0, 'C');
 $pdf->Cell(30, 20, '', 0, 1, 'C');
 
+$pdf->Ln(10);
+    $pdf->Cell(0,10,'MOYENNE:',0, 1,'C');
+   $pdf->Cell(0,10,''. number_format($moy, 2, '.', ''),0,1, 'C');
 // Et ainsi de suite pour les autres éléments constitutifs...
-
     
     // Nom du fichier PDF de sortie
     $file_name = 'bulletin_de_notes.pdf';
@@ -284,7 +294,7 @@ $pdf->Cell(30, 20, '', 0, 1, 'C');
 
             
              
-            <label for="uem">UE MAJEUR:</label>
+            <label for="uem">UE MAJEURES:</label>
 
             <label for="">Electricité:</label>
 
@@ -321,7 +331,7 @@ $pdf->Cell(30, 20, '', 0, 1, 'C');
             <input type="text" name="note8" id="note8" />
 
 
-            <label for="uem">UE MINEUR:</label>
+            <label for="uem">UE MINEURE:</label>
             <label for="">Droit:</label> 
             
             <label for="note9">Note 1 :</label>
