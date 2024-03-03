@@ -201,11 +201,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
                       </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 			
 
   <div class="row-fluid">
