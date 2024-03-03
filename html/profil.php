@@ -173,108 +173,43 @@ if ($info_utilisateur) {
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">PRÉNOM</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="firstName"
-                              name="firstName"
-                              value="<?php  echo $info_utilisateur['nom'] ?>"
-                              autofocus
-                            />
+                            <p><?php  echo $info_utilisateur['prenoms'] ?></p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">NOM DE FAMILLE</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="<?php  echo $info_utilisateur['nom'] ?>" />
+                            <p><?php  echo $info_utilisateur['nom'] ?></p>
+
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Date de naissance</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['birth'] ?>"
-                            />
+                            <p><?php  echo $info_utilisateur['birth'] ?></p>
                           </div>
+
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="email"
-                              value="<?php  echo $info_utilisateur['nom'] ?>"
-                              placeholder="john.doe@example.com"
-                            />
+                            <p><?php  echo $info_utilisateur['mail'] ?></p>
+                         
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Matricule</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['matricule'] ?>"
-                            />
+                            <p><?php  echo $info_utilisateur['mail'] ?></p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Niveau d'etude</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['niveau_etude'] ?>"
-                            />
+                            <p><?php  echo $info_utilisateur['niveau_etude'] ?></p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Filiere</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['filiere'] ?>"
-                            />
+                            <p><?php  echo $info_utilisateur['filiere'] ?></p>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Classe</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['classe'] ?>"
-                            />
+                            <p><?php  echo $info_utilisateur['classe'] ?></p>
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Numéro de téléphone</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">CI (+225)</span>
-                              <input
-                                type="text"
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                class="form-control"
-                                placeholder="202 555 0111"
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Mot de passe</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['mdp'] ?>"
-                            />
-                          </div>
+
+
                         </div>
-                        <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Sauvegarder</button>
-                          <button type="reset" class="btn btn-outline-secondary">Annuler</button>
-                        </div>
+                      
                       </form>
                     </div>
                     <!-- /Account -->

@@ -247,29 +247,6 @@ if ($info_utilisateur) {
                               value="<?php  echo $info_utilisateur['classe'] ?>"
                             />
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Numéro de téléphone</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">CI (+225)</span>
-                              <input
-                                type="text"
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                class="form-control"
-                                placeholder="202 555 0111"
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Mot de passe</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="<?php  echo $info_utilisateur['mdp'] ?>"
-                            />
-                          </div>
                         </div>
                         <div class="mt-2">
                           <button type="submit" class="btn btn-primary me-2">Sauvegarder</button>
