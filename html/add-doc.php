@@ -174,13 +174,13 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 
                   <!-- File input -->
                   <div class="card">
-                    <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3>
-                    <div class="card-body">
+                    <!-- <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3> -->
+                    <!-- <div class="card-body"> -->
                       <!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" type="file" id="formFile" />
                       </div> -->
-                      <div class="mb-3">
+                      <!-- <div class="mb-3">
 					  <form enctype="multipart/form-data" action="" name="form" method="post">
                   <div class="alert alert-primary" role="alert">Vous avez une limite de 50 fichiers
                   </div>
@@ -193,16 +193,16 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
     box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
 " type="submit" name="submit" id="submit" value="Submit">Valider</button>
 						</div>
-					</form>
+					</form> -->
                     
 					  
                       <!-- <div>
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
                       </div> -->
-                    </div>
-                  </div>
-                </div>
+                    <!-- </div> -->
+                  <!-- </div>
+                </div> -->
               </div>
             </div>
 			
