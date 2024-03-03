@@ -172,11 +172,11 @@ if ($info_utilisateur) {
                       <tbody>
       <tr>
         <th scope="row">7h30 - 10h00</th>
-        <td>Cours de Mathématiques</td>
-        <td>Cours de Français</td>
+        <td>ELECTROSTATIQUE</td>
+        <td>ANGLAIS</td>
         <td></td>
-        <td>Cours de Physique</td>
-        <td>Cours d'Anglais</td>
+        <td>ADO</td>
+        <td>LOGIQUE</td>
       </tr>
       <tr>
         <th scope="row">Récreation</th>
@@ -188,10 +188,10 @@ if ($info_utilisateur) {
       </tr>
       <tr>
         <th scope="row">10h15 - 12h45</th>
-        <td>Cours de Sciences</td>
-        <td>Cours de Histoire</td>
-        <td>Cours de Géographie</td>
-        <td>Cours de SVT</td>
+        <td>LOGIQUE</td>
+        <td>FRANCAIS</td>
+        <td>ALGORITHME</td>
+        <td>TP</td>
         <td></td>
       </tr>
       <tr>
@@ -205,9 +205,9 @@ if ($info_utilisateur) {
       <tr>
         <th scope="row">14h30 - 17h00</th>
         <td></td>
-        <td>Cours de Musique</td>
-        <td>Cours de Sport</td>
-        <td>Cours de Chimie</td>
+        <td>LOGIQUE</td>
+        <td>DROIT</td>
+        <td>DROIT</td>
         <td></td>
       </tr>
       <!-- Ajoutez ici d'autres lignes pour d'autres plages horaires -->
@@ -228,23 +228,7 @@ if ($info_utilisateur) {
 
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-    <script>
-  function appendValue(value) {
-    document.getElementById('display').value += value;
-  }
 
-  function clearDisplay() {
-    document.getElementById('display').value = '';
-  }
-
-  function calculate() {
-    try {
-      document.getElementById('display').value = eval(document.getElementById('display').value);
-    } catch (error) {
-      document.getElementById('display').value = 'Error';
-    }
-  }
-</script>
     <!-- Vendors JS -->
     <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
