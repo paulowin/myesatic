@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 28, 2020 at 02:32 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Hôte : 127.0.0.1:3306
+-- Généré le : dim. 03 mars 2024 à 03:05
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,40 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demo`
+-- Base de données : `myesatic`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `upload`
+-- Structure de la table `manuel`
 --
 
-CREATE TABLE `upload` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `manuel`;
+CREATE TABLE IF NOT EXISTS `manuel` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `fname` text NOT NULL,
-  `name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Déchargement des données de la table `manuel`
 --
 
---
--- Indexes for table `upload`
---
-ALTER TABLE `upload`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `upload`
---
-ALTER TABLE `upload`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `manuel` (`id`, `fname`, `name`) VALUES
+(1, '20240303030256_upload (1).sql', 'upload (1)_2.sql');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

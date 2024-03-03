@@ -27,7 +27,7 @@ if ($info_utilisateur) {
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -53,7 +53,7 @@ if ($info_utilisateur) {
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>MyESATIC</title>
 
     <meta name="description" content="" />
 
@@ -128,7 +128,7 @@ if ($info_utilisateur) {
                           <h2 class="card-title" style="color: #0483c4;">Bienvenue 
                           <?php  echo $info_utilisateur['nom'] ?>🎉</h2>
                           <p class="mb-4">
-                            N'hesites pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
+                            N'hésitez pas à <span class="fw-bold">configurer</span> ton emploi du temps personnel afin d'être le plus productif possible
                           </p>
 
                           <a href="javascript:;" class="btn btn-sm" style="color: #0483c4;">Voir plus</a>
@@ -156,6 +156,7 @@ if ($info_utilisateur) {
                   <div class="row">
                       <div class="card">
                         <div class="card-body">
+                        <h2 class="card-title" style="color: #0483c4;"> SEMESTRE 1 - PREMIERE PARTIE </h2>
                         <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>
@@ -172,11 +173,11 @@ if ($info_utilisateur) {
                       <tbody>
       <tr>
         <th scope="row">7h30 - 10h00</th>
-        <td>Cours de Mathématiques</td>
-        <td>Cours de Français</td>
+        <td>ELECTROSTATIQUE</td>
+        <td>ANGLAIS</td>
         <td></td>
-        <td>Cours de Physique</td>
-        <td>Cours d'Anglais</td>
+        <td>ADO</td>
+        <td>LOGIQUE</td>
       </tr>
       <tr>
         <th scope="row">Récreation</th>
@@ -188,10 +189,10 @@ if ($info_utilisateur) {
       </tr>
       <tr>
         <th scope="row">10h15 - 12h45</th>
-        <td>Cours de Sciences</td>
-        <td>Cours de Histoire</td>
-        <td>Cours de Géographie</td>
-        <td>Cours de SVT</td>
+        <td>LOGIQUE</td>
+        <td>FRANCAIS</td>
+        <td>ALGORITHME</td>
+        <td>TP</td>
         <td></td>
       </tr>
       <tr>
@@ -205,9 +206,9 @@ if ($info_utilisateur) {
       <tr>
         <th scope="row">14h30 - 17h00</th>
         <td></td>
-        <td>Cours de Musique</td>
-        <td>Cours de Sport</td>
-        <td>Cours de Chimie</td>
+        <td>LOGIQUE</td>
+        <td>DROIT</td>
+        <td>DROIT</td>
         <td></td>
       </tr>
       <!-- Ajoutez ici d'autres lignes pour d'autres plages horaires -->
@@ -228,23 +229,7 @@ if ($info_utilisateur) {
 
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-    <script>
-  function appendValue(value) {
-    document.getElementById('display').value += value;
-  }
 
-  function clearDisplay() {
-    document.getElementById('display').value = '';
-  }
-
-  function calculate() {
-    try {
-      document.getElementById('display').value = eval(document.getElementById('display').value);
-    } catch (error) {
-      document.getElementById('display').value = 'Error';
-    }
-  }
-</script>
     <!-- Vendors JS -->
     <script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 

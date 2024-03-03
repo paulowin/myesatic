@@ -89,7 +89,7 @@ $message_retour = null;
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -115,7 +115,7 @@ $message_retour = null;
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Connexion MyESATIC</title>
 
     <meta name="description" content="" />
 
@@ -270,7 +270,6 @@ $message_retour = null;
               
 
 <p id='message-retour'><strong><?php echo $message_retour; ?></strong></p>
-<a href="deconnexion.php">Déconnexion</a>
     
               <p class="text-center">
                 <span>Nouveau sur notre plateforme ?</span>

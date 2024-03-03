@@ -24,7 +24,7 @@ if(isset($_POST['submit'])!=""){
     	}
     }
 }
- $move =  move_uploaded_file($temp,"upload/".$fname);
+ $move =  move_uploaded_file($temp,"../storage/upload/".$fname);
  if($move){
  	$query=$conn->query("insert into upload(name,fname)values('$name','$fname')");
 	if($query){
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])!=""){
 <!DOCTYPE html>
 
 <!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+* MyESATIC | v1.0.0
 ==============================================================
 
 * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
@@ -66,7 +66,7 @@ if(isset($_POST['submit'])!=""){
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Basic Inputs - Forms | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Basic Inputs - Forms | MyESATIC</title>
 
     <meta name="description" content="" />
 
@@ -174,13 +174,13 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
 
                   <!-- File input -->
                   <div class="card">
-                    <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3>
-                    <div class="card-body">
+                    <!-- <h3 class="card-header"><span>Ajouter un fichier comme support du cours</span></h3> -->
+                    <!-- <div class="card-body"> -->
                       <!-- <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" type="file" id="formFile" />
                       </div> -->
-                      <div class="mb-3">
+                      <!-- <div class="mb-3">
 					  <form enctype="multipart/form-data" action="" name="form" method="post">
                   <div class="alert alert-primary" role="alert">Vous avez une limite de 50 fichiers
                   </div>
@@ -193,16 +193,16 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
     box-shadow: 0 0.125rem 0.25rem 0 rgb(4,131,196);
 " type="submit" name="submit" id="submit" value="Submit">Valider</button>
 						</div>
-					</form>
+					</form> -->
                     
 					  
                       <!-- <div>
                         <label for="formFileDisabled" class="form-label">Disabled file input example</label>
                         <input class="form-control" type="file" id="formFileDisabled" disabled />
                       </div> -->
-                    </div>
-                  </div>
-                </div>
+                    <!-- </div> -->
+                  <!-- </div>
+                </div> -->
               </div>
             </div>
 			
@@ -246,36 +246,7 @@ const dropzoneMulti = new Dropzone('#dropzone-multi', {
             <!-- / Content -->
 
             <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
-                </div>
-              </div>
-            </footer>
+           
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
